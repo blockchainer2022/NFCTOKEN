@@ -1,0 +1,70 @@
+.first-row-left .select {
+  width: 100%;
+  border: 1px solid #696969;
+  border-radius: 10px;
+  position: relative;
+  padding: 15px 0;
+  background-color: #1b1c1e;
+  padding-left: 20px;
+  color: #fff;
+  font-family: "Rubik", sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: -0.24px;
+  cursor: pointer;
+}
+
+.first-row-left .select img {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
+
+.first-row-left .option {
+  border: 1px solid #696969;
+  color: #fff;
+  padding: 10px;
+  border-top: none;
+  cursor: pointer;
+}
+
+.first-row-left .option:hover {
+  background-color: #1b1c1e;
+}
+
+/* Drag */
+.mydraner-wrapper {
+  margin-top: 20px;
+}
+
+.mydraner-wrapper .dragger {
+  border: 1px dashed #696969;
+  outline: none;
+  height: 141px;
+  line-height: 141px;
+  background-color: #1b1c1e;
+  border-radius: 10px;
+}
+
+input {
+  outline: none;
+  border: none;
+}
+
+.mydraner-wrapper .dragger .upload-text {
+  color: #fff;
+  text-align: center;
+  outline: none;
+  border: none;
+}
+
+.ant-upload-list-item {
+  height: auto;
+  width: 100%;
+  margin: auto;    
+}
+
+.ant-upload-list-item-info {  
+  margin: 10px auto;
+  padding: 7px 10px;  
+}
