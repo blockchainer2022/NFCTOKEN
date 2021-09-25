@@ -115,6 +115,7 @@ const Home = ({ account, mint, totalSupply, displayPrice, loadWeb3 }) => {
     }
   };
 
+  // eslint-disable-next-line no-unused-vars
   const handleGenerateCertificateClick = () => {
     if (nftInformation.nftName === "") {
       setNftInformationErr({

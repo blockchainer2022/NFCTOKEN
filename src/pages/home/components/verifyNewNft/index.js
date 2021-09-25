@@ -16,7 +16,8 @@ const VerifyNewNft = ({
   setNftInformation,
 }) => {
   const client = "https://ipfs.infura.io:5001/api/v0/add";
-  const [files, setFiles] = useState([]);
+  // eslint-disable-next-line no-unused-vars
+  // const [files, setFiles] = useState([]);
   const [openSelect, setOpenSelect] = useState(false);
   const [openSelect1, setOpenSelect1] = useState(false);
 
@@ -45,7 +46,7 @@ const VerifyNewNft = ({
       const { status } = info.file;
       if (status !== "uploading") {
         console.log(info.file, info.fileList);
-        setFiles(info.fileList);
+        // setFiles(info.fileList);
         setNftInformation({ ...nftInformation, files: [info.fileList] });
       }
       if (status === "done") {

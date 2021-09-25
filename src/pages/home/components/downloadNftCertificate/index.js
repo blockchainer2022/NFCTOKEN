@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import downcaret from "../../../../assets/downcaret.png";
+// import React, { useState } from "react";
+// import downcaret from "../../../../assets/downcaret.png";
 import "./downloadNftCertificate.css";
 
 const DownloadNftCertificate = ({
