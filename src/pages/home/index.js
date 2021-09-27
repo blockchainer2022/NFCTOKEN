@@ -9,7 +9,14 @@ import "./home.css";
 
 toast.configure();
 
-const Home = ({ account, mint, totalSupply, displayPrice, loadWeb3 }) => {
+const Home = ({
+  account,
+  mint,
+  totalSupply,
+  displayPrice,
+  loadWeb3,
+  blockChainDetails,
+}) => {
   const passportRegex = /^[0-9a-zA-Z]+$/;
   const nameRegex = /^[a-zA-Z][a-zA-Z\s]*$/;
   const [ownerInformation, setOwnerInformation] = useState({
@@ -146,6 +153,17 @@ const Home = ({ account, mint, totalSupply, displayPrice, loadWeb3 }) => {
         nftType: "* Select Nft Type",
       });
     } else {
+      mint(
+        ownerInformation.firstName,
+        ownerInformation.lastName,
+        ownerInformation.identificationType,
+        ownerInformation.identificationNumber,
+        nftInformation.nftName,
+        nftInformation.nftAvailableAmount,
+        nftInformation.totalEditionNumber,
+        nftInformation.nftType,
+        nftInformation.files[0][0]?.response?.Hash
+      );
       setVerifyNewNft(false);
       setVerifyNewNftCmp(true);
       setDownloadNftCertificate(true);
@@ -159,7 +177,6 @@ const Home = ({ account, mint, totalSupply, displayPrice, loadWeb3 }) => {
 
   return (
     <div>
-      <Header account={account} loadWeb3={loadWeb3} />
       <div className="create-nft-heading">
         {createNftOwner ? <h1>CREATE NFT OWNER</h1> : null}
         {verifyNewNft ? <h1>VERIFY NEW NFT</h1> : null}
@@ -277,21 +294,7 @@ const Home = ({ account, mint, totalSupply, displayPrice, loadWeb3 }) => {
             ) : null}
             {verifyNewNft ? (
               // <button onClick={() => handleGenerateCertificateClick()}>
-              <button
-                onClick={() => {
-                  mint(
-                    ownerInformation.firstName,
-                    ownerInformation.lastName,
-                    ownerInformation.identificationType,
-                    ownerInformation.identificationNumber,
-                    nftInformation.nftName,
-                    nftInformation.nftAvailableAmount,
-                    nftInformation.totalEditionNumber,
-                    nftInformation.nftType,
-                    nftInformation.files[0][0]?.response?.Hash
-                  );
-                }}
-              >
+              <button onClick={handleGenerateCertificateClick}>
                 GENARATE CERTIFICATE
               </button>
             ) : null}
@@ -301,6 +304,7 @@ const Home = ({ account, mint, totalSupply, displayPrice, loadWeb3 }) => {
         <DownloadNftCertificate
           ownerInformation={ownerInformation}
           downloadNftCertificate={downloadNftCertificate}
+          blockChainDetails={blockChainDetails}
         />
         {/* DOWNLOAD NFT CERTIFICATE End */}
         <div className="download-certificate-btn">

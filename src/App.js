@@ -8,6 +8,8 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import InformationModal from "./components/informationModal";
 import ConfirmationLoadingPopup from "./components/confirmationLoadingPopup";
+import DownloadCerti from "./pages/home/components/downloadCerti";
+import Header from "./components/header";
 
 const App = () => {
   const [chainId, setChainId] = useState(null);
@@ -28,6 +30,8 @@ const App = () => {
     useState(false);
   const [mintingInProgress, setMintingInProgress] = useState(false);
   const [confirmTransaction, setConfirmTransaction] = useState(false);
+  const [blockChainDetails, setBlockChainDetails] = useState({});
+  const [blockChainDetails2, setBlockChainDetails2] = useState({});
 
   async function loadWeb3() {
     if (window.ethereum) {
@@ -84,7 +88,11 @@ const App = () => {
       setPrice(price);
       const displayPrice = window.web3.utils.fromWei(price, "ether");
       setDisplayPrice(displayPrice);
-
+      const blockChainDetails = await contract.methods
+        .getAssetDetails(1)
+        .call();
+      setBlockChainDetails(blockChainDetails);
+      // console.log(blockChainDetails && blockChainDetails);
       //event will be fired by the smart contract when a new NFT is minted
       contract.events
         .NFTMinted()
@@ -161,7 +169,7 @@ const App = () => {
             setConfirmTransaction(false);
             setMintingInProgress(true);
           })
-          .on("confirmation", function () {
+          .on("confirmation", async function () {
             const el = document.createElement("div");
             el.innerHTML =
               "View minted NFT on OpenSea : <a href='https://testnets.opensea.io/account '>View Now</a>";
@@ -171,12 +179,10 @@ const App = () => {
             //   content: el,
             //   icon: "success",
             // });
+
             setNftMinted(true);
             setConfirmTransaction(false);
             setMintingInProgress(false);
-            setTimeout(() => {
-              window.location.reload(false);
-            }, 5000);
           })
           .on("error", function (error, receipt) {
             if (error.code === 4001) {
@@ -203,8 +209,15 @@ const App = () => {
       setEthereumCompatibleBrowser(true);
     }
   }
+
+  const downloadHander = async () => {
+    const blockChainDetails = await contract.methods.getAssetDetails(1).call();
+    setBlockChainDetails2(blockChainDetails);
+  };
+
   return (
     <>
+      <Header account={account} loadWeb3={loadWeb3} />
       <Switch>
         <Route
           exact
@@ -216,6 +229,21 @@ const App = () => {
               totalSupply={totalSupply}
               displayPrice={displayPrice}
               loadWeb3={loadWeb3}
+              blockChainDetails={blockChainDetails}
+            />
+          )}
+        />
+        <Route
+          exact
+          path="/view-certificate"
+          render={(props) => (
+            <DownloadCerti
+              account={account}
+              mint={mint}
+              totalSupply={totalSupply}
+              displayPrice={displayPrice}
+              blockChainDetails={blockChainDetails2}
+              handler={downloadHander}
             />
           )}
         />

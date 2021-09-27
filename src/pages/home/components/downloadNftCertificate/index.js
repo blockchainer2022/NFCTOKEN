@@ -5,7 +5,9 @@ import "./downloadNftCertificate.css";
 const DownloadNftCertificate = ({
   downloadNftCertificate,
   ownerInformation,
+  blockChainDetails,
 }) => {
+  console.log(blockChainDetails);
   return (
     <>
       {downloadNftCertificate ? (
@@ -18,19 +20,19 @@ const DownloadNftCertificate = ({
             <div className="information-wrapper">
               <div className="information-row">
                 <p className="left">First Name</p>
-                <p className="right">{ownerInformation.firstName}</p>
+                <p className="right">{blockChainDetails[1]}</p>
               </div>
               <div className="information-row">
                 <p className="left">Last Name</p>
-                <p className="right">{ownerInformation.lastName}</p>
+                <p className="right">{blockChainDetails[2]}</p>
               </div>
               <div className="information-row">
                 <p className="left">ID OR PASSPORT</p>
-                <p className="right">{ownerInformation.identificationType}</p>
+                <p className="right">{blockChainDetails[3]}</p>
               </div>
               <div className="information-row">
                 <p className="left">IDENTIFICATION NUMBER</p>
-                <p className="right">{ownerInformation.identificationNumber}</p>
+                <p className="right">{blockChainDetails[4]}</p>
               </div>
             </div>
           </div>
@@ -43,15 +45,15 @@ const DownloadNftCertificate = ({
             <div className="information-wrapper">
               <div className="information-row">
                 <p className="left">NFT NAME</p>
-                <p className="right">the future of originatlty</p>
+                <p className="right">{blockChainDetails[5]}</p>
               </div>
               <div className="information-row">
                 <p className="left">TOTAL EDITION NUMBER</p>
-                <p className="right">500</p>
+                <p className="right">{blockChainDetails[7]}</p>
               </div>
               <div className="information-row">
                 <p className="left">NFT EDITION NUMBER</p>
-                <p className="right">#0012</p>
+                <p className="right">{blockChainDetails[6]}</p>
               </div>
             </div>
           </div>
@@ -64,9 +66,7 @@ const DownloadNftCertificate = ({
             <div className="information-wrapper">
               <div className="information-row">
                 <p className="left">ADDRESS OWNER</p>
-                <p className="right">
-                  E0x8c5aCF6dBD24c66e6FD44d4A4C3d7a2D955AAad2
-                </p>
+                <p className="right">{blockChainDetails[0]}</p>
               </div>
               <div className="information-row">
                 <p className="left">TOKEN ID</p>

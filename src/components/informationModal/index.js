@@ -1,7 +1,7 @@
 import React from "react";
 import "./selectWalletPopup.css";
 
-const InformationPopup = ({ open, onClose, title, text }) => {
+const InformationPopup = React.memo(({ open, onClose, title, text }) => {
   return (
     <>
       <aside
@@ -95,13 +95,13 @@ const InformationPopup = ({ open, onClose, title, text }) => {
                 onClick={() => onClose(false)}
               >
                 OK
-              </button>{" "}
+              </button>
             </footer>
           </section>
         </section>
       </aside>
     </>
   );
-};
+});
 
 export default InformationPopup;
