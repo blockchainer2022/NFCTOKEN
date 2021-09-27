@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Header from "../../components/header";
+
 import CreateNftOwner from "./components/createNftOwner";
 import DownloadNftCertificate from "./components/downloadNftCertificate";
 import VerifyNewNft from "./components/verifyNewNft";
