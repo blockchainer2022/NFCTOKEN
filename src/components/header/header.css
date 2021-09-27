@@ -48,3 +48,15 @@
 .button-group .connect-button-wrapper {
   margin-left: 10px;
 }
+
+p.mobile {
+  display: none;
+}
+@media (max-width: 640px) {
+  p.mobile {
+    display: block;
+  }
+  p.desktop {
+    display: none;
+  }
+}

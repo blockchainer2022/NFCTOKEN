@@ -75,6 +75,12 @@ const DownloadNftCertificate = ({
                   0072922066110344370580022080279393 53792849
                 </p>
               </div>
+              <div className="information-row">
+                <p className="left">IMAGE</p>
+                <div className="right">
+                  <img src="https://via.placeholder.com/100" alt="" />
+                </div>
+              </div>
             </div>
           </div>
           {/* BLOCKCHAIN INFORMATION End */}
