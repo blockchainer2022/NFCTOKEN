@@ -28,7 +28,7 @@ const Header = ({ account, loadWeb3 }) => {
                 ? account.slice(0, 8) +
                   "..." +
                   account.slice(account.length - 5)
-                : `${mobile ? "Connect" : "Connect Mobile"}"`}
+                : `${mobile ? "Connect" : "Connect Mobile"}`}
             </button>
           </div>
         </div>
